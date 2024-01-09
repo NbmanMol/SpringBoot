@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update New User </title>
+</head>
+<body>
+<h2>Edit User </h2>
+<br>
+<form th:action="@{/admin/update}" th:object="${user}" method="post">
+    <input hidden="hidden" type="number" th:field="*{id}" id="id" placeholder="id"/>
+    <label for="firstName">Changed name:</label>
+    <input type="text" th:field="*{firstName}" id="firstName"/>
+    <br>
+    <label for="LastName">Changed lastname :</label>
+    <input type="text" th:field="*{lastName}" id="LastName"/>
+    <br>
+    <label for="email">Changed email:</label>
+    <input type="text" th:field="*{email}" id="email"/>
+    <br>
+    <label for="age">Changed age:</label>
+    <input type="text" th:field="*{age}" id="age"/>
+    <br>
+    <label for="password">Changed password:</label>
+    <input type="text" th:field="*{password}" id="password"/>
+    <div style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+    <br>
+    <div class="form-check form-check-inline">
+        <label>Roles:</label>
+        <input type="checkbox" name="roles"
+               th:each="role : ${allRoles}"
+               th:text="${role.rolename.replace('ROLE_', '')}"
+               th:value="${role.id}"
+               th:field="*{roleSet}"
+        />
+    </div>
+        <br>
+        <input type="submit" value="Update User!"/>
+</form>
+</body>
+</html>
