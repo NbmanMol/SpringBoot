@@ -23,7 +23,7 @@ public class InfoController  {
     }
 
     @GetMapping("/thisUser")
-    public ResponseEntity<User> showUserAccount(Principal principal) {
+    public ResponseEntity<User> getCurrenUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         return new ResponseEntity<>(userDetails.getUser(), HttpStatus.OK);

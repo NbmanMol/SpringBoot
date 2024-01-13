@@ -7,7 +7,7 @@ function getCurrentUser() {
         .then((res) => res.json())
         .then((user) => {
 
-            let rolesStringUser = rolesToStringForUser(user.roles);
+            let rolesStringUser = rolesToStringForUser(user.roleSet);
             let dataOfUser = '';
 
             dataOfUser += `<tr>

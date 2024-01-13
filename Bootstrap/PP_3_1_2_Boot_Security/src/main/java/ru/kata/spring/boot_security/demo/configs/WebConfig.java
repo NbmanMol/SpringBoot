@@ -14,8 +14,8 @@ import java.util.concurrent.TimeUnit;
 public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/javaScript/**")
-                .addResourceLocations("classpath:/templates/javaScript/")
+        registry.addResourceHandler("/javascript/**")
+                .addResourceLocations("classpath:/templates/javascript/")
                 .setCacheControl(CacheControl.maxAge(365, TimeUnit.DAYS).cachePublic())
                 .resourceChain(false)
                 .addResolver(new PathResourceResolver() {
