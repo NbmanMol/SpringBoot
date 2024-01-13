@@ -36,11 +36,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http
+                .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/user/**").hasAnyRole("USER", "ADMIN")
                 .antMatchers("/auth/login", "/auth/registration", "/error").permitAll() //все могут сюда попасть
-                .anyRequest().hasAnyRole("USER", "ADMIN")
+                .anyRequest().permitAll() //   hasAnyRole("USER", "ADMIN")
                 .and() //и
                 .formLogin()  //форма логина
                 .loginPage("/auth/login")  //страница логина базовая
